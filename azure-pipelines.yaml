@@ -30,18 +30,26 @@ stages:
         script: cp $(System.DefaultWorkingDirectory)/id_rsa.pub ~/.ssh
 
     ######### Step 2: install terraform
-    - task: TerraformInstaller@0
+    - task: CmdLine@2
+      inputs:
+        script: | 
+          sudo apt-get install zip unzip
+          export PATH=$PATH:/home/devopsagent/myagent/_work/_temp
+          export PATH=$PATH:/usr/bin/unzip
+          echo $PATH
+
+    - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
       displayName: install terraform
       inputs:
         terraformVersion: latest
 
 
     ######### Step 2: Initialise workspace using terraform init
-    - task: Bash@3
+    - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
       displayName: 'terraform init'
       inputs:
         command: init
-        # workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environnments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         backendType: azurerm
         backendServiceArm: 'connect'
         backendAzureRmSubscriptionId: 91cb39fe-ff4b-42e5-a52f-7a90e7f13bab
@@ -53,22 +61,22 @@ stages:
 
 
     ######### Step 3. Run the terraform plan
-    - task: Bash@3
+    - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
       displayName: 'terraform plan'
       inputs:
         command: plan
-        # workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environnments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         environmentServiceName: 'connect'
         commandOptions: -out project3cicd
 
     ########## Step 4. Run the terraform apply
 
-    - task: Bash@3
+    - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
       displayName: 'terraform apply'
       inputs:
         provider: 'azurerm'
         command: apply
-        # workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environnments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         environmentServiceName: 'connect'
         commandOptions: project3cicd
 
