@@ -133,11 +133,11 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                #! /bin/bash
-                cd $(Pipeline.Workspace)/automatedtest-artifact
-                unzip -o automatedtest-$(Build.BuildId).zip
-                cd selenium
-                python3 selenium/login.py 2>&1 | sudo tee -a /var/log/selenium-log.log
+                ls $(Pipeline.Workspace)/selenium
+                ls $(Pipeline.Workspace)/
+                python3 $(Pipeline.Workspace)/selenium/login.py | tee -a $(Pipeline.Workspace)/selenium/seleniumtestrun.log
+                cat $(Pipeline.Workspace)/selenium/seleniumtestrun.log
+                sudo cp $(Pipeline.Workspace)/selenium/seleniumtestrun.log /var/log
 
 
 
@@ -218,18 +218,20 @@ stages:
           sudo apt install -y nodejs npm
           sudo npm install -g newman
           sudo npm install -g newman-reporter-junitfull
+          ls '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
     - task: CmdLine@2
       displayName: Run Regression Test Suite
       continueOnError: true
       inputs:
-        script: 'newman run Regression.postman_collection.json -e postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-regression-test.xml'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
+        inputs:
+          script: 'newman run Regression.postman_collection.json -e project3.postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-regression-test.xml'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
     - task: CmdLine@2
       displayName: Run Data Validation Test Suite
       inputs:
-        script: 'newman run DV.postman_collection.json -e automatedtesting/postman/postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
+          script: 'newman run DV.postman_collection.json -e project3.postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
+         workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
 
     - task: PublishTestResults@2
       inputs:
