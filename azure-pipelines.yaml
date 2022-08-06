@@ -137,7 +137,7 @@ stages:
                 cd $(Pipeline.Workspace)/automatedtest-artifact
                 unzip -o automatedtest-$(Build.BuildId).zip
                 cd selenium
-                python3 login.py 2>&1 | sudo tee -a /var/log/selenium-log.log
+                python3 selenium/login.py 2>&1 | sudo tee -a /var/log/selenium-log.log
 
 
 
@@ -223,13 +223,13 @@ stages:
       displayName: Run Regression Test Suite
       continueOnError: true
       inputs:
-        script: 'newman run automatedtesting/postman/Regression.postman_collection.json -e automatedtesting/postman/postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-regression-test.xml'
-        workingDirectory: '$(System.DefaultWorkingDirectory)'
+        script: 'newman run Regression.postman_collection.json -e postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-regression-test.xml'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
     - task: CmdLine@2
       displayName: Run Data Validation Test Suite
       inputs:
-        script: 'newman run automatedtesting/postman/DV.postman_collection.json -e automatedtesting/postman/postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
-        workingDirectory: '$(System.DefaultWorkingDirectory)'
+        script: 'newman run DV.postman_collection.json -e automatedtesting/postman/postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
 
     - task: PublishTestResults@2
       inputs:
