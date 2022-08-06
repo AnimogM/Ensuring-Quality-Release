@@ -1,61 +1,23 @@
 {
 	"info": {
-		"_postman_id": "0ba10884-c2da-4990-a192-07b16cae7f47",
-		"name": "Regression",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17543112"
+		"_postman_id": "80bde15e-af31-411d-821d-8fe20f082ffa",
+		"name": "Regression Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get All Users",
+			"name": "Create Employee",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"success\");",
-							"});",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/employees",
-					"protocol": "https",
-					"host": [
-						"dummy",
-						"restapiexample",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"employees"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create User",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"id\");",
-							"});",
-							"",
 							"var json = pm.response.json();",
+							"pm.environment.set(\"id\", json.data.id);",
 							"",
-							"pm.environment.set(\"id\", json.id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
 							""
 						],
 						"type": "text/javascript"
@@ -67,7 +29,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"{{name}}\",\n    \"job\": \"{{job}}\"\n}",
+					"raw": "{\n    \"name\": \"{{name}}\",\n    \"salary\": \"{{salary}}\",\n    \"age\": \"{{age}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -75,17 +37,53 @@
 					}
 				},
 				"url": {
-					"raw": "https://reqres.in/api/users",
-					"protocol": "https",
+					"raw": "{{url}}/api/v1/create",
 					"host": [
-						"reqres",
-						"in"
+						"{{url}}"
 					],
 					"path": [
 						"api",
-						"users"
+						"v1",
+						"create"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var json = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/v1/employee/24",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"24"
+					]
+				},
+				"description": "Get a single employee data"
 			},
 			"response": []
 		},
@@ -96,9 +94,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful response\", function () {\r",
-							"\tpm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
-							"});"
+							"var json = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -109,21 +110,26 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"job\" : \"new job\"\r\n}"
+					"raw": "{\n    \"name\": \"{{new_name}}\",\n    \"salary\": \"{{new_salary}}\",\n    \"age\": \"{{new_age}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "https://reqres.in/api/users/{{id}}",
-					"protocol": "https",
+					"raw": "{{url}}/api/v1/update/{{id}}",
 					"host": [
-						"reqres",
-						"in"
+						"{{url}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"v1",
+						"update",
 						"{{id}}"
 					]
-				}
+				},
+				"description": "Update an employee record"
 			},
 			"response": []
 		},
@@ -134,9 +140,10 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 204\", function () {\r",
-							"    pm.response.to.have.status(204);\r",
-							"});"
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -146,18 +153,18 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users/{{id}}",
-					"protocol": "https",
+					"raw": "{{url}}/api/v1/delete/{{id}}",
 					"host": [
-						"reqres",
-						"in"
+						"{{url}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"v1",
+						"delete",
 						"{{id}}"
 					]
-				}
+				},
+				"description": "Delete an employee record"
 			},
 			"response": []
 		}
