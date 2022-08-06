@@ -31,7 +31,7 @@ stages:
 
     ######### Step 2: install terraform
   - task: TerraformInstaller
-      displayName: install terraform
+     displayName: install terraform
       inputs:
         terraformVersion: latest
 
