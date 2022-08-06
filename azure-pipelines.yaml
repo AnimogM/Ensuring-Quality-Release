@@ -34,7 +34,6 @@ stages:
       displayName: install Terraform v0.15.4
       inputs:
         terraformVersion: '0.15.4'
-        terraformVersion: latest
 
 
     ######### Step 2: Initialise workspace using terraform init
