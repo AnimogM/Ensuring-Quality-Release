@@ -133,10 +133,11 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                cat $(Pipeline.Workspace)/selenium
-                python3 (Pipeline.Workspace)/selenium/login.py | tee -a (Pipeline.Workspace)/selenium/seleniumtestrun.log
-                cat (Pipeline.Workspace)/selenium/seleniumtestrun.log
-                sudo cp (Pipeline.Workspace)/selenium/seleniumtestrun.log /var/log
+                ls $(Pipeline.Workspace)/selenium
+                ls $(Pipeline.Workspace)/
+                python3 $(Pipeline.Workspace)/selenium/login.py | tee -a $(Pipeline.Workspace)/selenium/seleniumtestrun.log
+                cat $(Pipeline.Workspace)/selenium/seleniumtestrun.log
+                sudo cp $(Pipeline.Workspace)/selenium/seleniumtestrun.log /var/log
 
 
 
