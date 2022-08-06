@@ -2,15 +2,20 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.common.by import By
+import logging
 
 print('Starting the browser...')
 options = ChromeOptions()
 options.add_argument("--headless")
 driver = webdriver.Chrome(options=options)
 
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S')
+
+
 # Start the browser and login with standard_user
-
-
 def login(user, password):
     print('Browser started successfully. Navigating to the demo page to login.')
     driver.get('https://www.saucedemo.com/')
