@@ -51,7 +51,7 @@ stages:
         command: init
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         backendType: azurerm
-        backendServiceArm: 'connect'
+        backendServiceArm: 'my'
         backendAzureRmSubscriptionId: 91cb39fe-ff4b-42e5-a52f-7a90e7f13bab
         backendAzureRmResourceGroupLocation: eastus
         backendAzureRmResourceGroupName: tfstate
