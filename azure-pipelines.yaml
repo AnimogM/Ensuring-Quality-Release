@@ -30,14 +30,14 @@ stages:
         script: cp $(System.DefaultWorkingDirectory)/id_rsa.pub ~/.ssh
 
     ######### Step 2: install terraform
-    - task: TerraformInstaller
+    - task: TerraformInstaller@0
       displayName: install terraform
       inputs:
         terraformVersion: latest
 
 
     ######### Step 2: Initialise workspace using terraform init
-    - task: TerraformCLI
+    - task: TerraformCLI@0
       displayName: 'terraform init'
       inputs:
         command: init
@@ -53,7 +53,7 @@ stages:
 
 
     ######### Step 3. Run the terraform plan
-    - task: TerraformCLI
+    - task: TerraformCLI@0
       displayName: 'terraform plan'
       inputs:
         command: plan
@@ -63,7 +63,7 @@ stages:
 
     ########## Step 4. Run the terraform apply
 
-    - task: TerraformCLI
+    - task: TerraformCLI@0
       displayName: 'terraform apply'
       inputs:
         provider: 'azurerm'
