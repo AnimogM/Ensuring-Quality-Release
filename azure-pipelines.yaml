@@ -219,12 +219,12 @@ stages:
       displayName: Run Regression Test Suite
       continueOnError: true
       inputs:
-        script: 'newman run automatedtesting/postman/Regression.postman_collection.json -e $(System.DefaultWorkingDirectory)/automatedtesting/postman/postmanproject3.postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-regression-test.xml'
+        script: 'newman run automatedtesting/postman/Regression_postman_collection.json -e $(System.DefaultWorkingDirectory)/automatedtesting/postman/postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-regression-test.xml'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
     - task: CmdLine@2
       displayName: Run Data Validation Test Suite
       inputs:
-        script: 'newman run automatedtesting/postman/DV.postman_collection.json -e $(System.DefaultWorkingDirectory)/automatedtesting/postman/postmanproject3.postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
+        script: 'newman run automatedtesting/postman/Data_validation_postman_collection.json -e $(System.DefaultWorkingDirectory)/automatedtesting/postman/postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
     - task: PublishTestResults@2
       inputs:
