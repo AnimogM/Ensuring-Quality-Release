@@ -1,9 +1,3 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1659747084376,1231,GET All Activities,200,OK,Endurance Test 1-1,text,true,,3109,215,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,1208,0,987
-1659747084871,898,GET All Activities,200,OK,Endurance Test 1-2,text,true,,3109,215,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,898,0,671
-1659747085608,214,Create new Activity,200,OK,Endurance Test 1-1,text,true,,262,323,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,214,0,0
-1659747085770,225,Create new Activity,200,OK,Endurance Test 1-2,text,true,,262,323,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,225,0,0
-1659747085823,213,Update Activity,200,OK,Endurance Test 1-1,text,true,,262,236,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities/1,213,0,0
-1659747085996,218,Update Activity,200,OK,Endurance Test 1-2,text,true,,262,236,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities/2,218,0,0
-1659747086037,215,Delete Activity,200,OK,Endurance Test 1-1,,true,,211,239,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities/1,215,0,0
-1659747086215,215,Delete Activity,200,OK,Endurance Test 1-2,,true,,211,239,1,1,https://maryamapp-appservice.azurewebsites.net/api/Activities/2,215,0,0
+1659791509696,20346,GET All Activities,200,OK,Endurance Test 1-1,text,true,,3109,215,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,20345,0,3074
+1659791509829,20213,GET All Activities,200,OK,Endurance Test 1-2,text,true,,3109,215,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,20212,0,2944

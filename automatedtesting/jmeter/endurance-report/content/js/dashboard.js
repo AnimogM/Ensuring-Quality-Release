@@ -173,7 +173,7 @@ $(document).ready(function() {
     });
 
     // Creates APDEX table
-    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.875, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Toleration threshold)", "F (Frustration threshold)", "Label"], "items": [{"data": [1.0, 500, 1500, "Delete Activity"], "isController": false}, {"data": [0.5, 500, 1500, "GET All Activities"], "isController": false}, {"data": [1.0, 500, 1500, "Update Activity"], "isController": false}, {"data": [1.0, 500, 1500, "Create new Activity"], "isController": false}]}, function(index, item){
+    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.0, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Toleration threshold)", "F (Frustration threshold)", "Label"], "items": [{"data": [0.0, 500, 1500, "GET All Activities"], "isController": false}]}, function(index, item){
         switch(index){
             case 0:
                 item = item.toFixed(3);
@@ -187,7 +187,7 @@ $(document).ready(function() {
     }, [[0, 0]], 3);
 
     // Create statistics table
-    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 8, 0, 0.0, 428.625, 213, 1231, 216.5, 1231.0, 1231.0, 1231.0, 3.8948393378773125, 3.6552154333008766, 0.9632500608568647], "isController": false}, "titles": ["Label", "#Samples", "FAIL", "Error %", "Average", "Min", "Max", "Median", "90th pct", "95th pct", "99th pct", "Transactions/s", "Received", "Sent"], "items": [{"data": ["Delete Activity", 2, 0, 0.0, 215.0, 215, 215, 215.0, 215.0, 215.0, 215.0, 5.089058524173028, 1.0486243638676844, 1.1877783078880406], "isController": false}, {"data": ["GET All Activities", 2, 0, 0.0, 1064.5, 898, 1231, 1064.5, 1231.0, 1231.0, 1231.0, 1.4357501794687726, 4.3591282304379035, 0.3014514536970567], "isController": false}, {"data": ["Update Activity", 2, 0, 0.0, 215.5, 213, 218, 215.5, 218.0, 218.0, 218.0, 5.115089514066496, 1.3087436061381075, 1.1788682864450128], "isController": false}, {"data": ["Create new Activity", 2, 0, 0.0, 219.5, 214, 225, 219.5, 225.0, 225.0, 225.0, 5.167958656330749, 1.3222706718346253, 1.630127583979328], "isController": false}]}, function(index, item){
+    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 2, 0, 0.0, 20279.5, 20213, 20346, 20279.5, 20346.0, 20346.0, 20346.0, 0.09829942003342179, 0.2984500946131918, 0.020639038385923524], "isController": false}, "titles": ["Label", "#Samples", "FAIL", "Error %", "Average", "Min", "Max", "Median", "90th pct", "95th pct", "99th pct", "Transactions/s", "Received", "Sent"], "items": [{"data": ["GET All Activities", 2, 0, 0.0, 20279.5, 20213, 20346, 20279.5, 20346.0, 20346.0, 20346.0, 0.09829942003342179, 0.2984500946131918, 0.020639038385923524], "isController": false}]}, function(index, item){
         switch(index){
             // Errors pct
             case 3:
@@ -228,7 +228,7 @@ $(document).ready(function() {
     }, [[1, 1]]);
 
         // Create top5 errors by sampler
-    createTable($("#top5ErrorsBySamplerTable"), {"supportsControllersDiscrimination": false, "overall": {"data": ["Total", 8, 0, "", "", "", "", "", "", "", "", "", ""], "isController": false}, "titles": ["Sample", "#Samples", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors"], "items": [{"data": [], "isController": false}, {"data": [], "isController": false}, {"data": [], "isController": false}, {"data": [], "isController": false}]}, function(index, item){
+    createTable($("#top5ErrorsBySamplerTable"), {"supportsControllersDiscrimination": false, "overall": {"data": ["Total", 2, 0, "", "", "", "", "", "", "", "", "", ""], "isController": false}, "titles": ["Sample", "#Samples", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors"], "items": [{"data": [], "isController": false}]}, function(index, item){
         return item;
     }, [[0, 0]], 0);
 
