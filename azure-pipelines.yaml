@@ -230,7 +230,7 @@ stages:
     - task: CmdLine@2
       displayName: Run Data Validation Test Suite
       inputs:
-          script: 'newman run DV.postman_collection.json -e project3.postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
+        script: 'newman run DV.postman_collection.json -e project3.postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
          workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
 
     - task: PublishTestResults@2
