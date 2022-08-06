@@ -30,7 +30,7 @@ stages:
         script: cp $(System.DefaultWorkingDirectory)/id_rsa.pub ~/.ssh
 
     ######### Step 2: install terraform
-    - task: TerraformInstaller@1
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
       displayName: install terraform
       inputs:
         terraformVersion: latest
