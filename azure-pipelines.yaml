@@ -37,7 +37,7 @@ stages:
 
 
     ######### Step 2: Initialise workspace using terraform init
-    - task: TerraformCLI@0
+    - task: Bash@3
       displayName: 'terraform init'
       inputs:
         command: init
@@ -53,7 +53,7 @@ stages:
 
 
     ######### Step 3. Run the terraform plan
-    - task: TerraformCLI@0
+    - task: Bash@3
       displayName: 'terraform plan'
       inputs:
         command: plan
@@ -63,7 +63,7 @@ stages:
 
     ########## Step 4. Run the terraform apply
 
-    - task: TerraformCLI@0
+    - task: Bash@3
       displayName: 'terraform apply'
       inputs:
         provider: 'azurerm'
