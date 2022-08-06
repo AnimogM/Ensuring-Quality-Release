@@ -133,11 +133,9 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                #! /bin/bash
-                cd $(Pipeline.Workspace)/automatedtest-artifact
-                unzip -o automatedtest-$(Build.BuildId).zip
-                cd selenium
-                python3 selenium/login.py 2>&1 | sudo tee -a /var/log/selenium-log.log
+                python3 /home/devopsagent/myagent/_work/1/selenium/login.py | tee -a /home/devopsagent/myagent/_work/1/selenium/seleniumtestrun.log
+                cat /home/devopsagent/myagent/_work/1/selenium/seleniumtestrun.log
+                sudo cp /home/devopsagent/myagent/_work/1/selenium/seleniumtestrun.log /var/log
 
 
 
