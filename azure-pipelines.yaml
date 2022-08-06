@@ -133,10 +133,10 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                cat $(Pipeline.Workspace)/automatedtest-artifact/selenium
-                python3 /home/devopsagent/myagent/_work/1/selenium/login.py | tee -a /home/devopsagent/myagent/_work/1/selenium/seleniumtestrun.log
-                cat /home/devopsagent/myagent/_work/1/selenium/seleniumtestrun.log
-                sudo cp /home/devopsagent/myagent/_work/1/selenium/seleniumtestrun.log /var/log
+                cat $(Pipeline.Workspace)/selenium
+                python3 (Pipeline.Workspace)/selenium/login.py | tee -a (Pipeline.Workspace)/selenium/seleniumtestrun.log
+                cat (Pipeline.Workspace)/selenium/seleniumtestrun.log
+                sudo cp (Pipeline.Workspace)/selenium/seleniumtestrun.log /var/log
 
 
 
@@ -223,12 +223,12 @@ stages:
       continueOnError: true
       inputs:
         script: 'newman run Regression.postman_collection.json -e postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-regression-test.xml'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/postman'
     - task: CmdLine@2
       displayName: Run Data Validation Test Suite
       inputs:
-        script: 'newman run DV.postman_collection.json -e automatedtesting/postman/postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
+        script: 'newman run DV.postman_collection.json -e postman_environment.json --reporters cli,junit --reporter-junit-export TestResults/result-data-validation-test.xml'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/postman'
 
     - task: PublishTestResults@2
       inputs:
