@@ -14,7 +14,7 @@ stages:
   - job: TerraformIaCCIJob
     displayName: TerraformIaCCI - CI Job
     pool:
-      vmImage: 'Ubuntu-16.04'
+      vmImage: 'ubuntu-18.04'
     steps:
     ######### Needed for Terraform VM deployment
     - task: InstallSSHKey@0
@@ -85,7 +85,7 @@ stages:
   jobs:
   - job: Build
     pool:
-      vmImage: '18.04'
+      vmImage: 'ubuntu-18.04'
     steps:
     - task: ArchiveFiles@2
       displayName: 'Archive Selenium tests'
@@ -103,7 +103,7 @@ stages:
   - deployment: UITests
     displayName: 'UI Tests'
     pool:
-      vmImage: 'Ubuntu-16.04'
+      vmImage: 'ubuntu-18.04'
     environment:  'TEST'
     strategy:
       runOnce:
@@ -145,7 +145,7 @@ stages:
   jobs:
   - job: Build
     pool:
-      vmImage: 'Ubuntu-16.04'
+      vmImage: 'ubuntu-18.04'
     steps:
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
@@ -161,7 +161,7 @@ stages:
   jobs:
   - deployment: FakeRestAPI
     pool:
-      vmImage: 'Ubuntu-16.04'
+      vmImage: 'ubuntu-18.04'
     environment: 'TEST'
     strategy:
       runOnce:
@@ -181,7 +181,7 @@ stages:
   - job: JMeterTests
     displayName: JMeter Tests
     pool:
-      vmImage: 'Ubuntu-16.04'
+      vmImage: 'ubuntu-18.04'
     steps:
       - task: Bash@3
         displayName: Install JMeter
@@ -208,7 +208,7 @@ stages:
     
   - job: RunPostmanTests
     pool:
-      vmImage: 'Ubuntu-16.04'
+      vmImage: 'ubuntu-18.04'
     steps:
     - task: CmdLine@2
       displayName: Install Newman
