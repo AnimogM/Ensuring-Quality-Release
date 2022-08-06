@@ -60,3 +60,13 @@ module "publicip" {
   resource_type    = "publicip"
   resource_group   = "${module.resource_group.resource_group_name}"
 }
+
+module "vmlinux" {
+  source           = "./modules/vm"
+  location         = "${var.location}"
+  application_type = "${var.application_type}"
+  resource_type    = "VMLinux"
+  resource_group       = "${module.resource_group.resource_group_name}"
+  subnet_id        = "${module.network.subnet_id_test}"
+  public_ip = "${module.publicip.public_ip_address_id}"
+}

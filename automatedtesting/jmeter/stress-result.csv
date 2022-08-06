@@ -1,0 +1,9 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1659747323625,1194,GET All Activities,200,OK,Stress Test 1-1,text,true,,3109,215,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,1194,0,961
+1659747324821,213,Create new Activity,200,OK,Stress Test 1-1,text,true,,262,323,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,213,0,0
+1659747324124,911,GET All Activities,200,OK,Stress Test 1-2,text,true,,3109,215,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,911,0,681
+1659747325035,222,Update Activity,200,OK,Stress Test 1-1,text,true,,262,236,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities/1,222,0,0
+1659747325036,221,Create new Activity,200,OK,Stress Test 1-2,text,true,,262,323,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities,221,0,0
+1659747325258,216,Delete Activity,200,OK,Stress Test 1-1,,true,,211,239,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities/1,216,0,0
+1659747325258,216,Update Activity,200,OK,Stress Test 1-2,text,true,,262,236,2,2,https://maryamapp-appservice.azurewebsites.net/api/Activities/2,216,0,0
+1659747325474,219,Delete Activity,200,OK,Stress Test 1-2,,true,,211,239,1,1,https://maryamapp-appservice.azurewebsites.net/api/Activities/2,219,0,0
