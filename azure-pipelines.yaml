@@ -30,11 +30,11 @@ stages:
         script: cp $(System.DefaultWorkingDirectory)/id_rsa.pub ~/.ssh
 
     ######### Step 2: install terraform
-  - task: TerraformInstaller
-     displayName: install terraform
+  - task: TerraformInstaller@0
+      displayName: install Terraform v0.15.4
       inputs:
-        terraformVersion: latest
-
+        terraformVersion: '0.15.4'
+        
     ######### Step 2: Initialise workspace using terraform init
     - task: TerraformCLI
       displayName: 'terraform init'
