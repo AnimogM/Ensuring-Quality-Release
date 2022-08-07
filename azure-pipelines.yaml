@@ -5,7 +5,7 @@ trigger:
 
 variables:
   python.version: '3.7.6'
-  sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDRCFZLqYK0yEzXgnkknUrNC7mVzPwysdnrW1wSLY+BCxTDM0PU7O/VM2ctseeon6et/zZNt513ANXXRA19utibnhkA87iVP1AUqL3ad8YoiHvXJSKDnV0HZhRovRb0qmuIklqMQhg1mVWXCWUT+UhPGgmktTTC4SInfx6jjUJg3SEqgcilwJ+LNp/P11leUqtMo7CCBAG2FBxUV2jlrU/P8fj1n9ia/UdjEObE+0gKsmCb4Yt4X7bsYfIqC4tCvKe431Fj0AmYjpJ1yfURwhYbMUMYRHI9R4kYpt2YyVcqqJTf6cKlFYqWHO/9GZ11tbym0wafs+FPfBdMoK6IP+wa1BOKAl/Sj7nFgVm1GckR4vBzkc7YeRYcTZ9SvSj3IiJhOmOKGfeHR5AOz4OxDJQwEOqwIYTJtfLyvpyxkuZHEuy6fKLjTEJ2yUv8W0jYZ2Gub+TL7217rzzG/8HYug7TrLInHkpTQ0He9QbcIuCP+hfOaG2b+TansOPRurFZxPe3KNou0UE9swpOkvkcv+32lekplbNgwiyeSzdpRKN2WGxBcIXc/U9ZP1QLzSjdzpOuEk+pe9nwBuPqFCeBkbl68+CEdN+f2OGJ0mJvI9OKBwM4GO37d8ITrs2kQL5NJsmZSfrawtEpx6n/lRa3ps+fDqpIC1WV4OtnoPtSebNpNQ== maryam@DESKTOP-QN1QGKQ'
+  sshPublicKey: 'ssh-rsa ***'
 
 stages:
 - stage: TerraformIaCCI
@@ -19,7 +19,7 @@ stages:
     ######### Needed for Terraform VM deployment
     - task: InstallSSHKey@0
       inputs:
-        knownHostsEntry: '20.65.55.213 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPfun7fFplEkyEBI8Si5Bm26Wbz4rX9VBTbr1z9aXcCGpza0azQuXMgRR8C3/6/CwBmSIELlJPj0a8EQRO3/92A=
+        knownHostsEntry: '**'
 '
         sshPublicKey: $(sshPublicKey)
         sshKeySecureFile: 'id_rsa'
@@ -52,7 +52,7 @@ stages:
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         backendType: azurerm
         backendServiceArm: 'my'
-        backendAzureRmSubscriptionId: 91cb39fe-ff4b-42e5-a52f-7a90e7f13bab
+        backendAzureRmSubscriptionId: '******'
         backendAzureRmResourceGroupLocation: eastus
         backendAzureRmResourceGroupName: tfstate
         backendAzureRmStorageAccountName: tfstategomina
